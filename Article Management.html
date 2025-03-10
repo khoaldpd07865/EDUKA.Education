@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Màu chủ đạo */
+        :root {
+            --primary-green: #1a3c34;
+            --secondary-orange: #f4a261;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --text-gray: #6c757d;
+            --gradient-green: linear-gradient(45deg, #1a3c34, #2e5e55);
+            --gradient-orange: linear-gradient(45deg, #f4a261, #e76f51);
+            --border-glow: 0 0 10px rgba(244, 162, 97, 0.5);
+            --gradient-text: linear-gradient(45deg, #f4a261, #e76f51);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--light-gray), #e8ecef);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding-top: 70px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--gradient-green);
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid var(--secondary-orange);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            color: var(--white) !important;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link {
+            color: var(--white) !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary-orange) !important;
+            text-shadow: 0 0 5px rgba(244, 162, 97, 0.5);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: 100vh;
+            background: var(--gradient-green);
+            color: var(--white);
+            padding-top: 30px;
+            position: fixed;
+            width: 240px;
+            transition: width 0.3s ease;
+            box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
+            border-right: 3px solid var(--secondary-orange);
+            top: 70px;
+        }
+
+        .sidebar a {
+            color: var(--white);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar a i {
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .sidebar a:hover {
+            background: var(--gradient-orange);
+            color: var(--primary-green);
+            border-left: 4px solid var(--primary-green);
+            box-shadow: var(--border-glow);
+            font-weight: 600;
+        }
+
+        /* Content Area */
+        .content {
+            margin-left: 240px;
+            padding: 40px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 32px;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2::after {
+            content: '';
+            width: 50%;
+            height: 4px;
+            background: var(--gradient-orange);
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        /* Article Form */
+        .article-form {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            border: 2px solid transparent;
+            background: linear-gradient(to right, var(--white), var(--white)) padding-box,
+                        var(--gradient-orange) border-box;
+            margin-bottom: 30px;
+        }
+
+        .article-form h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 24px;
+            color: var(--primary-green);
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .article-form .form-control {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: var(--text-gray);
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s ease;
+        }
+
+        .article-form .form-control:focus {
+            border-color: var(--secondary-orange);
+            box-shadow: 0 0 5px rgba(244, 162, 97, 0.5);
+        }
+
+        .article-form label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--primary-green);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-custom {
+            background: var(--gradient-orange);
+            color: var(--primary-green);
+            border: none;
+            padding: 10px 25px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: var(--border-glow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-custom:hover {
+            background: var(--gradient-green);
+            color: var(--white);
+            box-shadow: 0 0 15px rgba(26, 60, 52, 0.5);
+        }
+
+        /* Article List */
+        .article-list {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            border: 2px solid transparent;
+            background: linear-gradient(to right, var(--white), var(--white)) padding-box,
+                        var(--gradient-orange) border-box;
+        }
+
+        .article-list h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 24px;
+            color: var(--primary-green);
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .article-item {
+            padding: 15px;
+            border-bottom: 1px solid #e8ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .article-item:last-child {
+            border-bottom: none;
+        }
+
+        .article-item h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+
+        .article-item p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        .btn-action {
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .btn-edit {
+            background: var(--gradient-orange);
+            color: var(--primary-green);
+        }
+
+        .btn-edit:hover {
+            background: var(--gradient-green);
+            color: var(--white);
+        }
+
+        .btn-delete {
+            background: linear-gradient(45deg, #dc3545, #c82333);
+            color: var(--white);
+        }
+
+        .btn-delete:hover {
+            background: linear-gradient(45deg, #c82333, #dc3545);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px;
+            }
+
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .navbar-brand {
+                font-size: 18px;
+            }
+
+            .nav-link {
+                font-size: 14px;
+            }
+
+            .sidebar {
+                width: 70px;
+                top: 60px;
+            }
+
+            .sidebar a span {
+                display: none;
+            }
+
+            .sidebar a i {
+                margin-right: 0;
+                font-size: 20px;
+            }
+
+            .sidebar a {
+                justify-content: center;
+            }
+
+            .content {
+                margin-left: 70px;
+                padding: 20px;
+            }
+
+            .content h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Eduka Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="./admin.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+        <a href=""><i class="fas fa-book"></i><span>Courses</span></a>
+        <a href="./ListStudentsXTeacher.html"><i class="fas fa-users"></i><span>Students X Teacher</span></a>
+        <a href="./Quiz.html"><i class="fas fa-question-circle"></i><span>Quiz</span></a>
+        <a href="./Article Management.html"><i class="fas fa-newspaper"></i><span>Articles</span></a>
+        <a href="./Payment Management.html"><i class="fas fa-money-bill-wave"></i><span>Payments</span></a>
+        <a href=""><i class="fas fa-chart-bar"></i><span>Reports</span></a>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h2>Article Management</h2>
+
+        <!-- Form Thêm Bài Báo -->
+        <div class="article-form">
+            <h3>Add New Article</h3>
+            <form id="articleForm">
+                <div class="mb-3">
+                    <label for="articleTitle" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="articleTitle" placeholder="Enter article title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="articleAuthor" class="form-label">Author</label>
+                    <input type="text" class="form-control" id="articleAuthor" placeholder="Enter author name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="articleDate" class="form-label">Publication Date</label>
+                    <input type="date" class="form-control" id="articleDate" required>
+                </div>
+                <div class="mb-3">
+                    <label for="articleContent" class="form-label">Content</label>
+                    <textarea class="form-control" id="articleContent" rows="5" placeholder="Enter article content" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-custom">Add Article</button>
+            </form>
+        </div>
+
+        <!-- Danh Sách Bài Báo -->
+        <div class="article-list">
+            <h3>Article List</h3>
+            <div id="articleList">
+                <div class="article-item">
+                    <div>
+                        <h5>School Annual Event 2025</h5>
+                        <p>Author: John Doe | Published: 2025-01-15</p>
+                        <p>Summary: The annual event of the school will take place on March 15, 2025, with exciting activities...</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-action btn-edit">Edit</button>
+                        <button class="btn btn-action btn-delete">Delete</button>
+                    </div>
+                </div>
+                <div class="article-item">
+                    <div>
+                        <h5>New Science Lab Opening</h5>
+                        <p>Author: Jane Smith | Published: 2025-02-10</p>
+                        <p>Summary: The school is proud to announce the opening of a new science lab for advanced experiments...</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-action btn-edit">Edit</button>
+                        <button class="btn btn-action btn-delete">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Giữ lại để navbar responsive hoạt động) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
