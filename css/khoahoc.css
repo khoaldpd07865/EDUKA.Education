@@ -1,0 +1,367 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+    background: #a7b1c2;
+    color: white;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Navigation */
+/* Navigation Menu */
+.navmenu {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 10px 20px;
+    justify-content: center; /* Căn giữa menu */
+    /* background: linear-gradient(135deg, #2b2e4a, #1f2235); */
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap; /* Để tránh tràn màn hình */
+}
+
+/* Nút menu */
+.navmenu button {
+    width: 160px; /* Tăng kích thước cho cân đối */
+    height: 85px;
+    border-radius: 16px;
+    border: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffdf6b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hiệu ứng hover */
+.navmenu button:hover {
+    background: #ff4b5c;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navmenu {
+        flex-wrap: wrap; /* Xếp hàng dọc trên màn hình nhỏ */
+        justify-content: center;
+    }
+    .navmenu button {
+        width: 45%;
+    }
+}
+
+
+/* Container */
+.container {
+    display: flex;
+    width: 80%;
+    height: 100%;
+    margin-left: 150px;
+}
+
+/* Sidebar */
+/* ========== SIDEBAR ========== */
+.sidebar {
+    width: 280px;
+    background: linear-gradient(135deg, #2b2e4a, #1f2235);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Học kỳ */
+.semester {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.semester button {
+    flex: 1;
+    padding: 12px;
+    background: #40445e;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.semester button.active {
+    background: #ff4b5c;
+}
+
+.semester button:hover {
+    background: #ff6b7a;
+}
+
+/* Thanh tìm kiếm */
+.search-bar {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 6px;
+    background: #3a3e5a;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-bar::placeholder {
+    color: #b0b3d6;
+}
+
+/* Danh sách khóa học */
+.course-list {
+    list-style: none;
+}
+
+.course-list li {
+    padding: 12px 15px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+.course-list li span {
+    display: block;
+    font-size: 12px;
+    color: #b0b3d6;
+    margin-top: 4px;
+}
+
+/* Hiệu ứng hover */
+.course-list li:hover {
+    background: #50577a;
+    transform: scale(1.02);
+}
+
+/* Mục đang chọn */
+.course-list li.active {
+    background: #ff4b5c;
+    color: white;
+    font-weight: bold;
+    border-left: 5px solid #ffdf6b;
+}
+
+
+/* Content */
+/* ========== CONTENT ========== */
+.content {
+    flex: 1;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Tiêu đề khóa học */
+.course-header {
+    padding-bottom: 15px;
+    border-bottom: 2px solid #3a3e5a;
+    margin-bottom: 15px;
+}
+
+.course-header h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffdf6b;
+}
+
+.course-header p {
+    font-size: 14px;
+    color: #b0b3d6;
+    margin-top: 5px;
+}
+
+/* Thanh trạng thái */
+.status {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.status span {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.not-started { background: gray; }
+.in-progress { background: blue; }
+.completed { background: green; }
+.weak-point { background: red; }
+
+/* ========== DANH SÁCH BÀI HỌC ========== */
+.lesson-list {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Bài học */
+.lesson {
+    width: calc(50% - 20px);
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.lesson img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Tiêu đề bài học */
+.lesson h3 {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffdf6b;
+}
+
+/* Nút bấm */
+.lesson .actions button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.lesson .actions button:hover {
+    background: #0056b3;
+}
+
+/* Hiệu ứng hover cho bài học */
+.lesson:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Bài học bị khóa */
+.lesson.locked {
+    background: #333;
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.lesson.locked p {
+    font-size: 14px;
+    color: red;
+}
+
+/* Responsive cho Tablet */
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
+        margin-left: 0;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .content {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+/* Responsive cho Mobile */
+@media (max-width: 768px) {
+    /* Điều chỉnh menu */
+    .navmenu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navmenu button {
+        width: 45%; /* Hai nút trên một hàng */
+    }
+
+    /* Ẩn sidebar trên mobile */
+    .sidebar {
+        display: none;
+    }
+
+    /* Bài học chuyển thành 1 cột */
+    .lesson-list {
+        flex-direction: column;
+    }
+
+    .lesson {
+        width: 100%;
+    }
+
+    /* Nội dung chính co lại */
+    .content {
+        padding: 10px;
+    }
+}
+
+/* Responsive cho điện thoại nhỏ (dưới 480px) */
+@media (max-width: 480px) {
+    /* Menu dọc trên mobile */
+    .navmenu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navmenu button {
+        width: 45%; /* Hai nút trên một hàng */
+    }
+
+    /* Ẩn sidebar trên mobile */
+    .sidebar {
+        display: none;
+    }
+
+    /* Bài học chuyển thành 1 cột */
+    .lesson-list {
+        flex-direction: column;
+    }
+
+    .lesson {
+        width: 100%;
+    }
+
+    /* Nội dung chính co lại */
+    .content {
+        padding: 10px;
+    }
+}
+

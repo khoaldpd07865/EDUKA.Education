@@ -1,0 +1,304 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Eduka
+  </title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 left-0 w-full z-50" x-data="{ mobileOpen: false }">
+    <div class="container mx-auto flex justify-between items-center py-4 px-6">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <img alt="Eduka Logo" class="h-16" src="img/z6391593010154_6b47a329cd17fb03a8c1dd224c8ac643-removebg-preview.png">
+        </div>
+
+        <!-- Menu cho desktop -->
+        <nav class="hidden md:flex space-x-6">
+            <a class="hover:text-green-600" href="#">Trang chủ</a>
+            <a class="hover:text-green-600" href="khoahoc.html">Khóa học</a>
+            <a class="hover:text-green-600" href="#">Tài liệu</a>
+            <a class="hover:text-green-600" href="#">Bảng xếp hạng</a>
+            <a class="hover:text-green-600" href="#"> Đánh giá </a>
+            <a class="hover:text-green-600" href="#">Tin tức</a>
+            <a class="hover:text-green-600" href="#">Liên hệ</a>
+        </nav>
+
+        <!-- Nút Apply Now -->
+        <div class="hidden md:block ml-6">
+            <a class="bg-white-400 text-green-700 px-6 py-3 rounded-lg hover:bg-green-500 shadow-md" href="login.html">Login </a>
+        </div>
+
+        <!-- Hamburger menu cho mobile -->
+        <button @click="mobileOpen = !mobileOpen" class="md:hidden text-green-700 text-2xl focus:outline-none">
+            ☰
+        </button>
+    </div>
+
+    <!-- Menu Mobile -->
+    <nav x-show="mobileOpen" class="md:hidden flex flex-col bg-white text-black p-4 space-y-2 border-t">
+        <a class="hover:text-green-600" href="#">Trang chủ</a>
+        <a class="hover:text-green-600" href="khoahoc.html">Khóa học</a>
+        <a class="hover:text-green-600" href="">Tài liệu</a>
+        <a class="hover:text-green-600" href="#">Bảng xếp hạng</a>
+        <a class="hover:text-green-600" href="#">Đánh giá</a>
+        <a class="hover:text-green-600" href="#">Tin Tức</a>
+        <a class="hover:text-green-600" href="#">Liên hệ</a>
+        <a class="bg-white-400 text-green-700 px-4 py-2 rounded text-center hover:bg-green-300" href="login.html">Login </a>
+    </nav>
+</header>
+
+
+  <!-- Hero Section -->
+  <!-- Slider Section -->
+<!-- Slider Section -->
+<section class="relative w-full overflow-hidden">
+    <div style="position: relative;">
+        <img src="img/20_02_banner_2025.jpg" alt="Hình ảnh nền" style="width: 100%;">
+        
+        <!-- Khối text màu trắng trên ảnh -->
+        <div style="position: absolute; top: 40%; left: 10%; transform: translateY(-50%);
+                    color: white; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+                    text-align: left; max-width: 40%;">
+            <h5 style="font-size: 36px; font-weight: bold;">Tự học trực tuyến với trí tuệ nhân tạo AI</h5>
+            <p style="font-size: 18px; margin-top: 10px;">Hơn 10 triệu học sinh yêu thích và tiến bộ vượt trội</p>
+            <button style="margin-top: 20px; padding: 10px 20px; font-size: 18px; background-color: green; 
+                           color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Học thử ngay
+            </button>
+        </div>
+    </div>
+
+    <!-- Khối màu đen (overlay) -->
+    <div class="absolute left-1/2 transform -translate-x-1/2 bg-black text-white 
+                rounded-xl p-8 w-4/5 max-w-5xl shadow-lg"
+         style="top: 65%;">
+        <h2 class="text-center text-2xl font-bold mb-6">Trợ lý học tập thông minh VioEdu</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+            <!-- Cột 1 -->
+            <div class="p-4">
+                <img src="img/anh1.png" alt="Icon" class="mx-auto w-12 h-12 mb-3">
+                <h3 class="font-bold text-lg">Hơn 92%</h3>
+                <p class="text-gray-300 text-sm">Hơn 92% học sinh tiến bộ rõ rệt và yêu thích, tự giác học tập</p>
+            </div>
+            <!-- Cột 2 -->
+            <div class="p-4">
+                <img src="img/anh2.png" alt="Icon" class="mx-auto w-12 h-12 mb-3">
+                <h3 class="font-bold text-lg">Chính xác 95%</h3>
+                <p class="text-gray-300 text-sm">Gợi ý lộ trình học cá nhân hóa</p>
+            </div>
+            <!-- Cột 3 -->
+            <div class="p-4">
+                <img src="img/anh3.png" alt="Icon" class="mx-auto w-12 h-12 mb-3">
+                <h3 class="font-bold text-lg">1,000,000++</h3>
+                <p class="text-gray-300 text-sm">1,000,000++ nội dung kiến thức theo SGK và nâng cao</p>
+            </div>
+            <!-- Cột 4 -->
+            <div class="p-4">
+                <img src="img/anh4.png" alt="Icon" class="mx-auto w-12 h-12 mb-3">
+                <h3 class="font-bold text-lg">10,000++</h3>
+                <p class="text-gray-300 text-sm">10,000++ video bài giảng hoạt hình từ tình huống thực tế</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    
+  <!-- Features Section -->
+  <section class="bg-white py-16">
+   <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <div class="p-6 bg-gray-100 rounded-lg shadow">
+     <i class="fas fa-graduation-cap text-4xl text-green-700 mb-4"></i>
+     <h3 class="text-xl font-bold">
+        Báo cáo trực quan
+     </h3>
+     <p class="mt-2 text-gray-600">
+        Nhận báo cáo chi tiết hàng ngày về điểm mạnh, điểm yếu và kết quả học tập của con.
+     </p>
+    </div>
+    <div class="p-6 bg-gray-100 rounded-lg shadow">
+     <i class="fas fa-chalkboard-teacher text-4xl text-green-700 mb-4"></i>
+     <h3 class="text-xl font-bold">
+        Tiết kiệm thời gian
+     </h3>
+     <p class="mt-2 text-gray-600">
+        Tiết kiệm thời gian khi con tự giác, chủ động và tiến bộ trong học tập.
+     </p>
+    </div>
+    <div class="p-6 bg-gray-100 rounded-lg shadow">
+     <i class="fas fa-book text-4xl text-green-700 mb-4"> </i>
+     <h3 class="text-xl font-bold">
+        Hỗ trợ kèm con học
+     </h3>
+     <p class="mt-2 text-gray-600">
+        Sử dụng học liệu, lộ trình gợi ý và các phân tích của VioEdu để hỗ trợ con tự học hoặc có kế hoạch bồi dưỡng phù hợp.
+     </p>
+    </div>
+    <div class="p-6 bg-gray-100 rounded-lg shadow">
+     <i class="fas fa-dollar-sign text-4xl text-green-700 mb-4"> </i>
+     <h3 class="text-xl font-bold">
+        Tiết kiệm tài chính
+     </h3>
+     <p class="mt-2 text-gray-600">
+        Tiết kiệm chi phí, giảm áp lực học thêm khi con tự học hiệu quả.
+     </p>
+    </div>
+   </div>
+  </section>
+  <!-- About Us Section -->
+  <section class="bg-gray-100 py-16">
+   <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold">
+        Chương trình học được quan tâm nhất
+    </h2>
+    <p class="mt-4 text-gray-600">
+     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+    </p>
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="p-6 bg-white rounded-lg shadow">
+      <img alt="Education Services" class="w-full h-40 object-cover rounded" height="200" src="img/a1.png" width="300"/>
+      <h3 class="text-xl font-bold mt-4">
+        Toán VioEdu
+      </h3>
+      <p class="mt-2 text-gray-600">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+     </div>
+     <div class="p-6 bg-white rounded-lg shadow">
+      <img alt="International Hubs" class="w-full h-40 object-cover rounded" height="200" src="img/a2.png" width="300"/>
+      <h3 class="text-xl font-bold mt-4">
+        Tiếng Việt
+      </h3>
+      <p class="mt-2 text-gray-600">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+     </div>
+     <div class="p-6 bg-white rounded-lg shadow">
+      <img alt="Skilled Lecturers" class="w-full h-40 object-cover rounded" height="200" src="img/a3.png" width="300"/>
+      <h3 class="text-xl font-bold mt-4">
+        Toán Tiếng Anh
+      </h3>
+      <p class="mt-2 text-gray-600">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Statistics Section -->
+  <!-- Statistics Section -->
+<section class="bg-green-500 text-white py-16">
+    <div class="container mx-auto text-center">
+       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div>
+             <h3 class="text-4xl font-bold">500</h3>
+             <p class="mt-2">Số khóa học</p>
+          </div>
+          <div>
+             <h3 class="text-4xl font-bold">1900</h3>
+             <p class="mt-2"> Số học sinh</p>
+          </div>
+          <div>
+             <h3 class="text-4xl font-bold">750</h3>
+             <p class="mt-2"> Số giảng viên</p>
+          </div>
+          <div>
+             <h3 class="text-4xl font-bold">30</h3>
+             <p class="mt-2">Số giải thưởng</p>
+          </div>
+       </div>
+    </div>
+ </section>
+ 
+  <!-- Courses Section -->
+  <section class="bg-white py-16">
+   <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold">
+        Khóa Học Của Chúng Tôi
+    </h2>
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="p-6 bg-gray-100 rounded-lg shadow">
+      <img alt="Acting and Drama" class="w-full h-40 object-cover rounded" height="200" src="img/1.png" width="300"/>
+      <h3 class="text-xl font-bold mt-4">
+       Toán
+      </h3>
+      <p class="mt-2 text-gray-600">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+     </div>
+     <div class="p-6 bg-gray-100 rounded-lg shadow">
+      <img alt="Art and Design" class="w-full h-40 object-cover rounded" height="200" src="img/2.png" width="300"/>
+      <h3 class="text-xl font-bold mt-4">
+       Tiếng Việt
+      </h3>
+      <p class="mt-2 text-gray-600">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+     </div>
+     <div class="p-6 bg-gray-100 rounded-lg shadow">
+      <img alt="Business Management" class="w-full h-40 object-cover rounded" height="200" src="img/1.png" width="300"/>
+      <h3 class="text-xl font-bold mt-4">
+       Toán tiếng anh
+      </h3>
+      <p class="mt-2 text-gray-600">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+ 
+  <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>TRỤ SỞ CHÍNH</h3>
+            <p>Tầng 8,9 Tòa nhà Thái Holdings,<br> 210 Đường Trần Quang Khải,<br> Hoàn Kiếm, Hà Nội.</p>
+            <p>Tel: (024) 3935 2722</p>
+            <p>Fax: (024) 2220 0669</p>
+        </div>
+        <div class="footer-column">
+            <h3>CHI NHÁNH</h3>
+            <p>Tầng 4, Tầng 9 Tòa nhà President Place,<br> Số 93 Đường Nguyễn Du,<br> Phường Bến Nghé, Quận 1, TP Hồ Chí Minh.</p>
+            <p>Tel: (028) 3821 8885</p>
+            <p>Fax: (028) 3821 8879</p>
+        </div>
+        <div class="footer-column">
+            <h3>TỔNG ĐÀI ĐẶT LỆNH</h3>
+            <p>HN: (024) 3926 4660</p>
+            <p>HCM: (028) 3821 8889</p>
+            <p>Email: services@bsc.com.vn</p>
+        </div>
+        <div class="footer-column">
+            <h3>LIÊN KẾT</h3>
+            <p><a href="#">Tuyển dụng</a></p>
+            <p><a href="#">Hướng dẫn giao dịch</a></p>
+            <p><a href="#">Facebook.com/BIDVSecurities</a></p>
+            <p><a href="#">Sitemap</a></p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+<script src="js/index.js"></script>

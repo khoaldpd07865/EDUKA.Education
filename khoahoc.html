@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khóa học</title>
+    <link rel="stylesheet" href="css/khoahoc.css">
+</head>
+<body>
+
+    <nav class="navmenu">
+        <button>
+            <img src="img/icon_math_on.png" alt="">
+            <p>Toán</p>
+        </button>
+        <button>
+            <img src="img/icon_math_english_off.png" alt="">
+            <p>Tiếng Việt</p>
+        </button>
+        <button>
+            <img src="img/icon_vietnamese_literature_off.png" alt="">
+            <p>Toán Tiếng Anh</p>
+        </button>
+        <button>
+            <img src="img/icon_finance_on.png" alt="">
+            <p>Tài chính</p>
+        </button>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="semester">
+                <button class="active">Học kì 1</button>
+                <button>Học kì 2</button>
+            </div>
+            <input type="text" placeholder="Tìm nhanh kỹ năng..." class="search-bar">
+            <ul class="course-list">
+                <li class="active">Các số từ 0 đến 10 <span>Chủ điểm: 5 | Bài kiểm tra: 3</span></li>
+                <li>So sánh vị trí, nhiều ít, lớn bé <span>Chủ điểm: 3 | Bài kiểm tra: 3</span></li>
+                <li>Hình học <span>Chủ điểm: 2 | Bài kiểm tra: 3</span></li>
+                <li>Phép cộng trong phạm vi đến 10 <span>Chủ điểm: 4 | Bài kiểm tra: 3</span></li>
+                <li>Ôn tập chủ đề "Hình học, đo lường" <span>Chủ điểm: 2 | Bài kiểm tra: 3</span></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <div class="course-header">
+                <h2>Các số từ 0 đến 10</h2>
+                <p>0/5 Chủ điểm | 0/3 Bài kiểm tra | 0% hoàn thành</p>
+                <div class="status">
+                    <span class="not-started"></span> Chưa thực hành
+                    <span class="in-progress"></span> Đang thực hành
+                    <span class="completed"></span> Đã hoàn thành
+                    <span class="weak-point"></span> Chủ điểm còn yếu
+                </div>
+            </div>
+
+            <div class="lesson-list">
+                <div class="lesson">
+                    <img src="img/a1.png" alt="Bài học">
+                    <h3>I.1.1. Các số 1, 2, 3</h3>
+                    <div class="actions">
+                        
+                        <button>📝 Thực hành</button>
+                        
+                    </div>
+                </div>
+                <div class="lesson locked">
+                    <img src="img/2.png" alt="Bài học">
+                    <h3>I.1.2. Các số 4, 5, 6</h3>
+                    <p>Bạn cần mua khóa học để học chủ điểm này</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
